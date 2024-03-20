@@ -18,6 +18,13 @@ const starConfig = {
   },
 	size: "24px",
 }
+
+2024-03-20 03:26:12
+술먹갑...
+0.5 단위 별점 표현이 필요할 것 같다. 당연히 SSR 에서이겠지..
+style 객체 속성으로 처리가 가능할 것인가?
+
+
 */
 
 import React, { useMemo, useState } from "react";

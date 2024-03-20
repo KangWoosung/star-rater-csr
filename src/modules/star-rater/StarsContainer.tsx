@@ -26,7 +26,8 @@ Usage:
 */
 
 import React, { useState } from "react";
-import StarRaterCSR from "./StarRaterCSR";
+// import StarRaterCSR from "./StarRaterCSR";
+import StarRaterCSR from "./StarRaterCSR2";
 import { defaultStarConfig } from "./defaultStarConfig";
 
 type StarsContainerPropsType = {
@@ -35,9 +36,12 @@ type StarsContainerPropsType = {
 };
 
 const StarsContainer = ({ auth, starConfig }: StarsContainerPropsType) => {
-  const [score, setScore] = useState<number>(2);
+  const [score, setScore] = useState<number>(3.4);
+  const [fillOffset, setFillOffset] = useState<number>(50);
 
-  const SSR_CSR = auth ? "CSR" : "SSR";
+  const SSR_CSR = auth ? "CSR" : "CSR";
+
+  console.log(defaultStarConfig.color.filled);
 
   return (
     <>
@@ -49,11 +53,32 @@ const StarsContainer = ({ auth, starConfig }: StarsContainerPropsType) => {
             auth={auth}
             defaultScore={score}
             setScore={setScore}
+            setFillOffset={setFillOffset}
             starConfig={starConfig ? starConfig : defaultStarConfig}
           />
           <p>Rating - {score}</p>
         </div>
       </div>
+
+      {/* SVG Element for decimal render */}
+      <svg width="0" height="0">
+        <linearGradient id="star-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop stopColor={`${defaultStarConfig.color.filled}`} offset="0%" />
+          <stop
+            stopColor={`${defaultStarConfig.color.filled}`}
+            offset={`${fillOffset}%`}
+          />
+          <stop
+            stopColor={`${defaultStarConfig.color.unfilled}`}
+            offset={`${fillOffset}%`}
+          />
+          <stop
+            stopColor={`${defaultStarConfig.color.unfilled}`}
+            offset="100%"
+          />
+        </linearGradient>
+      </svg>
+      {/* <AiFillStar style={{ fill: "url(#star-gradient)", fontSize: "24px" }} /> */}
     </>
   );
 };

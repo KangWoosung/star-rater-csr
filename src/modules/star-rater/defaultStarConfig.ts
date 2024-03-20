@@ -3,7 +3,7 @@ export const defaultStarConfig = {
   count: 5,
   score: 0,
   color: {
-    filled: "#f5eb3b",
+    filled: "#fcba05",
     unfilled: "#DCDCDC",
   },
   size: "24px",
