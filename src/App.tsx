@@ -5,7 +5,7 @@ import StarsContainer from "./modules/star-rater/StarsContainer";
 import { defaultStarConfig } from "./modules/star-rater/defaultStarConfig";
 
 function App() {
-  const [score, setScore] = useState<number>(3.4);
+  const [score, setScore] = useState<number>(1);
 
   const newConfig = {
     ...defaultStarConfig,
@@ -16,7 +16,7 @@ function App() {
     <>
       <h1>StarRater-CSR</h1>
       <StarsContainer
-        score={score}
+        score={3.4}
         setScore={setScore}
         auth={false}
         starConfig={defaultStarConfig}
