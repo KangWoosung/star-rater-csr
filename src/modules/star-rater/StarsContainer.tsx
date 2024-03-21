@@ -1,8 +1,8 @@
 /*  2024-03-19 17:03:09
 
-1. For SSR
+1. For static Stars
   <StarRaterCSR  auth={false} defaultScore={score} config={null} />
-2. For CSR
+2. For adjustable Stars
   <StarRaterCSR  auth={true} defaultScore={score} setScore={setScore} config={null} />
 3. Hydration
   <StarRaterCSR  auth={true} defaultScore={scoreState}  setScore={setScore} config={null} />
@@ -16,12 +16,14 @@ Usage:
     setScore={setScore}
     starConfig={starConfig ? starConfig : defaultStarConfig}
   />
-  auth: enable | disable star manipulation
+  auth: enable | disable : stars adjustment
   defaultScore: initial score
   setScore: set score state function
   starConfig: star configuration object
       ojectType: DefaultStarConfigType
 
+
+  <AiFillStar style={{ fill: "url(#star-gradient)", fontSize: "24px" }} />
 
 */
 
@@ -45,12 +47,8 @@ const StarsContainer = ({
 }: StarsContainerPropsType) => {
   const [fillOffset, setFillOffset] = useState<number>(50);
 
-  const SSR_CSR = auth ? "CSR" : "CSR";
-
   return (
     <>
-      <h3>StarsContainer {SSR_CSR}</h3>
-
       <div className="row">
         <div className="col text-center">
           <StarRaterCSR
@@ -60,7 +58,6 @@ const StarsContainer = ({
             setFillOffset={setFillOffset}
             starConfig={starConfig ? starConfig : defaultStarConfig}
           />
-          <p>Rating - {score}</p>
         </div>
       </div>
 
@@ -82,7 +79,6 @@ const StarsContainer = ({
           />
         </linearGradient>
       </svg>
-      {/* <AiFillStar style={{ fill: "url(#star-gradient)", fontSize: "24px" }} /> */}
     </>
   );
 };

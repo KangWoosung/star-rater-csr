@@ -5,7 +5,8 @@ import StarsContainer from "./modules/star-rater/StarsContainer";
 import { defaultStarConfig } from "./modules/star-rater/defaultStarConfig";
 
 function App() {
-  const [score, setScore] = useState<number>(1);
+  const [score1, setScore1] = useState<number>(3.4);
+  const [score2, setScore2] = useState<number>(1);
 
   const newConfig = {
     ...defaultStarConfig,
@@ -15,18 +16,22 @@ function App() {
   return (
     <>
       <h1>StarRater-CSR</h1>
+      <h3>StarsContainer </h3>
       <StarsContainer
-        score={3.4}
-        setScore={setScore}
+        score={score1}
+        setScore={setScore1}
         auth={false}
         starConfig={defaultStarConfig}
       />
+      <p>Rating - {score1}</p>
+      <h3>StarsContainer </h3>
       <StarsContainer
-        score={score}
-        setScore={setScore}
+        score={score2}
+        setScore={setScore2}
         auth={true}
         starConfig={newConfig}
       />
+      <p>Rating - {score2}</p>
     </>
   );
 }
