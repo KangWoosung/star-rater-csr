@@ -31,17 +31,21 @@ import StarRaterCSR from "./StarRaterCSR2";
 import { defaultStarConfig } from "./defaultStarConfig";
 
 type StarsContainerPropsType = {
+  score: number;
+  setScore: (score: number) => void;
   auth: boolean;
   starConfig?: typeof defaultStarConfig;
 };
 
-const StarsContainer = ({ auth, starConfig }: StarsContainerPropsType) => {
-  const [score, setScore] = useState<number>(3.4);
+const StarsContainer = ({
+  score,
+  setScore,
+  auth,
+  starConfig,
+}: StarsContainerPropsType) => {
   const [fillOffset, setFillOffset] = useState<number>(50);
 
   const SSR_CSR = auth ? "CSR" : "CSR";
-
-  console.log(defaultStarConfig.color.filled);
 
   return (
     <>

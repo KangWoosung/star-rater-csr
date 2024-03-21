@@ -6,7 +6,7 @@ decimal expression added
     // const flooredScore = Math.round(defaultScore - decimal);
 */
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { DefaultStarConfigType, defaultStarConfig } from "./defaultStarConfig";
 import { AiFillStar } from "react-icons/ai";
 
@@ -40,6 +40,12 @@ const StarRaterCSR = ({
   const ceiledScore = Math.ceil(defaultScore);
   const decimalPercentage = Math.round(decimal * 100);
 
+  useEffect(() => {
+    if (decimalPercentage > 0) {
+      setFillOffset(decimalPercentage);
+    }
+  }, [decimalPercentage]);
+
   const defaultStyle: StarStyleType = {
     fontSize: starConfigObj.size,
     color: starConfigObj.color.unfilled,
@@ -68,7 +74,6 @@ const StarRaterCSR = ({
         let curStyle = { ...defaultStyle };
         if (!auth && decimalPercentage && idx === ceiledScore) {
           curStyle = { ...defaultStyle, fill: "url(#star-gradient)" };
-          setFillOffset(decimalPercentage);
         }
         return (
           <AiFillStar
@@ -89,12 +94,7 @@ const StarRaterCSR = ({
       });
   }, [defaultScore, starConfigObj, hoverRating]);
 
-  return (
-    <>
-      <h3>Star</h3>
-      {starRating}
-    </>
-  );
+  return <>{starRating}</>;
 };
 
 export default StarRaterCSR;

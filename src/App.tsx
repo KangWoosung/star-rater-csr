@@ -1,10 +1,12 @@
 // import { useState } from "react";
 
+import { useState } from "react";
 import StarsContainer from "./modules/star-rater/StarsContainer";
 import { defaultStarConfig } from "./modules/star-rater/defaultStarConfig";
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [score, setScore] = useState<number>(3.4);
+
   const newConfig = {
     ...defaultStarConfig,
     color: { ...defaultStarConfig.color, filled: "#ff0000" },
@@ -13,8 +15,18 @@ function App() {
   return (
     <>
       <h1>StarRater-CSR</h1>
-      <StarsContainer auth={false} />
-      <StarsContainer auth={true} starConfig={newConfig} />
+      <StarsContainer
+        score={score}
+        setScore={setScore}
+        auth={false}
+        starConfig={defaultStarConfig}
+      />
+      <StarsContainer
+        score={score}
+        setScore={setScore}
+        auth={true}
+        starConfig={newConfig}
+      />
     </>
   );
 }
