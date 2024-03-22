@@ -36,7 +36,7 @@ type StarsContainerPropsType = {
   score: number;
   setScore: (score: number) => void;
   auth: boolean;
-  starConfig?: typeof defaultStarConfig;
+  starConfig: typeof defaultStarConfig;
 };
 
 const StarsContainer = ({
@@ -56,7 +56,7 @@ const StarsContainer = ({
             defaultScore={score}
             setScore={setScore}
             setFillOffset={setFillOffset}
-            starConfig={starConfig ? starConfig : defaultStarConfig}
+            starConfig={starConfig}
           />
         </div>
       </div>
@@ -64,19 +64,16 @@ const StarsContainer = ({
       {/* SVG Element for decimal render */}
       <svg width="0" height="0">
         <linearGradient id="star-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
-          <stop stopColor={`${defaultStarConfig.color.filled}`} offset="0%" />
+          <stop stopColor={`${starConfig.color.filled}`} offset="0%" />
           <stop
-            stopColor={`${defaultStarConfig.color.filled}`}
+            stopColor={`${starConfig.color.filled}`}
             offset={`${fillOffset}%`}
           />
           <stop
-            stopColor={`${defaultStarConfig.color.unfilled}`}
+            stopColor={`${starConfig.color.unfilled}`}
             offset={`${fillOffset}%`}
           />
-          <stop
-            stopColor={`${defaultStarConfig.color.unfilled}`}
-            offset="100%"
-          />
+          <stop stopColor={`${starConfig.color.unfilled}`} offset="100%" />
         </linearGradient>
       </svg>
     </>

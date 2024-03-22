@@ -44,7 +44,7 @@ const StarRaterCSR = ({
     if (decimalPercentage > 0) {
       setFillOffset(decimalPercentage);
     }
-  }, [decimalPercentage]);
+  }, [decimalPercentage, setFillOffset]);
 
   const defaultStyle: StarStyleType = {
     fontSize: starConfigObj.size,
